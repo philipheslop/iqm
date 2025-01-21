@@ -1,6 +1,7 @@
 import React from "react";
-import "./styles.css";
+import "./App.css";
 import { getMoodlets, Moodlet } from "./mockApi";
+import { MoodletComponent } from "./MoodletComponent";
 
 export default function App() {
   const [moodlets, setMoodlets] = React.useState<Moodlet[] | null>(null);
@@ -15,19 +16,19 @@ export default function App() {
   if (!moodlets)
     return (
       <div className="App">
-        <h1>Hello CodeSandbox</h1>
-        <h2>Start editing to see some magic happen!</h2>
+        <h1>No Moodlets Loaded</h1>
       </div>
     );
 
   return (
-    <div>
+    <div className="App">
       <ul>
         {moodlets.map((moodlet) => {
           return (
-            <li key={moodlet.id}>
-              {moodlet.id} {moodlet.name} {moodlet.state}
-            </li>
+            <MoodletComponent
+              moodlet={moodlet}
+              isFullWord={false}
+            ></MoodletComponent>
           );
         })}
       </ul>

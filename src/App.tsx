@@ -27,7 +27,7 @@ export default function App() {
           return (
             <MoodletComponent
               moodlet={moodlet}
-              isFullWord={false}
+              isFullWord={true}
             ></MoodletComponent>
           );
         })}

@@ -3,18 +3,35 @@ a {
   text-decoration: none;
 }
 
-.moodlet-card {
+.moodlet {
+  --moodlet-colour: black;
+  --moodlet-text-colour: white;
+  --moodlet-border-colour: red;
   flex: 1;
-  border-radius: 5px;
-  background-color: #a32b2b;
-  margin: 10px;
+  margin: 5px;
+  padding: 5px;
   justify-content: center; /* Aligns items on the main axis */
   align-items: center; /* Aligns items on the cross axis */
-  width: 290px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  height: 20px;
+  border: 3px;
+  border-style: solid;
+  border-color: var(--moodlet-border-colour);
+  background-color: var(--moodlet-colour);
+  color: var(--moodlet-text-colour);
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
-.moodlet-header {
+.moodlet-fullword {
+  width: fit-content;
+  border-radius: 20px;
+}
+
+.moodlet-not-fullword {
+  width: 20px;
+  border-radius: 50%;
+}
+
+/*.moodlet-header {
   --moodlet-colour: "black";
   --moodlet-text-colour: "white";
   border-radius: 5px;
@@ -22,14 +39,10 @@ a {
   margin: auto;
   background-color: var(--moodlet-colour);
   color: var(--moodlet-text-colour);
-}
+}*/
 
 .moodlet-header-title-elements {
   display: inline-block;
-}
-
-.moodlet-logo {
-  padding: 5px;
 }
 
 .moodlet-header-title {
@@ -89,7 +102,7 @@ a {
   display: none;
 }
 
-.check_box_label:hover {
+/*.check_box_label:hover {
   background: url("./assets/check_box_hover.svg") no-repeat;
   background-position: center;
   background-size: 30px;
@@ -175,7 +188,7 @@ a {
   margin-left: -60px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
-  /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+  /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: * /
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -183,4 +196,4 @@ a {
 .moodlet-link-info:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
-}
+}*/

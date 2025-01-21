@@ -1,4 +1,5 @@
 import { Moodlet } from "./mockApi";
+import "./MoodletComponent.css";
 
 export interface MoodletComponentProps {
   moodlet: Moodlet;
@@ -10,12 +11,12 @@ export const MoodletComponent: React.FC<MoodletComponentProps> = ({
   isFullWord,
 }) => {
   return (
-    <div className="moodlet-card">
-      <div>
-        {moodlet.id}
-        {isFullWord ? moodlet.name : moodlet.name[0]}
-        {moodlet.state}
-      </div>
+    <div
+      className={`moodlet ${
+        isFullWord ? "moodlet-fullword" : "moodlet-not-fullword"
+      }`}
+    >
+      {isFullWord ? moodlet.name : moodlet.name[0]}
     </div>
   );
 };

@@ -1,0 +1,4 @@
+[
+    { "name": "not required", "transitions": [{"action":"rightclick","result":"required"}] },
+    { "name": "required", "transitions": [{"action":"rightclick","result":"not required"}] }
+]

@@ -26,9 +26,27 @@ export default function App() {
       const result = await getMoodletStates();
       setMoodletStates(result);
     };
+    console.log("useEffect running");
     doGetMoodlets();
     doGetMoodletStates();
   }, []);
+
+  const moodletStateHandler = (id: number, newState: string) => {
+    console.log(id);
+    console.log(newState);
+    if (moodlets) {
+      setMoodlets(
+        moodlets.map((moodlet: Moodlet) => {
+          return moodlet.id === id
+            ? {
+                ...moodlet,
+                state: newState,
+              }
+            : moodlet;
+        })
+      );
+    }
+  };
 
   if (!moodlets || !moodletStates)
     return (
@@ -44,6 +62,7 @@ export default function App() {
           return (
             <MoodletComponent
               key={moodlet.id}
+              moodletStateHandler={moodletStateHandler}
               moodlet={moodlet}
               moodletStates={moodletStates}
               isFullWord={true}

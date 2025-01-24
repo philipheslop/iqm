@@ -1,6 +1,22 @@
 [
-    { "name": "not required", "transitions": [{"action":"rightclick","result":"required"}] },
-    { "name": "required", "transitions": [{"action":"rightclick","result":"not required"},{"action":"leftclick","result":"current"} ] },
-    { "name": "current", "transitions": [{"action":"leftclick","result":"completed"}] },
-    { "name": "completed", "transitions": [{"action":"rightclick","result":"required"},{"action":"leftclick","result":"current"}] }
+    { "name": "not required",
+      "transitions": [{"action":"rightclick","result":"required"}],
+      "bgcolour" : "Lavender",
+      "bordercolour": "LightSteelBlue",
+      "textcolour": "LightSteelBlue"},
+    { "name": "required",
+      "transitions": [{"action":"rightclick","result":"not required"},{"action":"leftclick","result":"current"} ],
+      "bgcolour" : "LightSteelBlue",
+      "bordercolour": "LightSteelBlue",
+      "textcolour": "#ffffff" },
+    { "name": "current",
+      "transitions": [{"action":"leftclick","result":"completed"}],
+      "bgcolour" : "#CD5C5C",
+      "bordercolour": "#CD5C5C",
+      "textcolour": "#ffffff" },
+    { "name": "completed",
+      "transitions": [{"action":"rightclick","result":"required"},{"action":"leftclick","result":"current"}],
+      "bgcolour" : "Green",
+      "bordercolour": "Green",
+      "textcolour": "#ffffff" }
 ]

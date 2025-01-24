@@ -13,6 +13,9 @@ export type Moodlet = {
 export type MoodletState = {
   name: string;
   transitions: Transition[];
+  bgcolour: string;
+  bordercolour: string;
+  textcolour: string;
 };
 
 export type Transition = {

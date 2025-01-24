@@ -5,59 +5,65 @@ import "./MoodletComponent.css";
 export interface MoodletComponentProps {
   moodlet: Moodlet;
   moodletStates: MoodletState[];
+  moodletStateHandler: (id: number, state: string) => void;
   isFullWord: boolean;
 }
 
 export const MoodletComponent: React.FC<MoodletComponentProps> = ({
   moodlet,
+  moodletStateHandler,
   moodletStates,
   isFullWord,
 }) => {
-  const handleClick = React.useCallback((event: MouseEvent) => {
-    event.preventDefault();
-    console.log("handleclick");
-    console.log(moodlet);
-    let currentState: MoodletState | undefined = moodletStates.find(
+  const getCurrentState = (): MoodletState | undefined => {
+    return moodletStates.find(
       (state: MoodletState) => state.name === moodlet.state
     );
+  };
+
+  const handleClick = (event: MouseEvent) => {
+    event.preventDefault();
+    let currentState = getCurrentState();
     if (currentState) {
+      console.log("currentState");
+      console.log(currentState);
+      console.log(event.type);
       let transition = null;
       switch (event.type) {
         case "click":
           transition = currentState.transitions.find(
-            (transition: Transition) => transition.action === "leftclick"
+            (t: Transition) => t.action === "leftclick"
           );
-          transition ? (moodlet.state = transition.result) : null;
           break;
         case "contextmenu":
           transition = currentState.transitions.find(
-            (transition: Transition) => transition.action === "rightclick"
+            (t: Transition) => t.action === "rightclick"
           );
-          transition ? (moodlet.state = transition.result) : null;
           break;
       }
-      console.log(moodlet);
+      transition ? moodletStateHandler(moodlet.id, transition.result) : null;
     }
-  }, []);
-
-  console.log("handleclick");
+  };
 
   return (
-    <div
-      style={
-        {
-          "--moodlet-colour": moodlet.state === "required" ? "black" : "grey",
-          "--moodlet-border-colour":
-            moodlet.state === "required" ? "red" : "blue",
-        } as React.CSSProperties
-      }
-      className={`moodlet ${
-        isFullWord ? "moodlet-fullword" : "moodlet-not-fullword"
-      }`}
-      onClick={handleClick}
-      onContextMenu={handleClick}
-    >
-      {isFullWord ? moodlet.name : moodlet.name[0]}
+    <div>
+      <div
+        style={
+          {
+            "--moodlet-colour": getCurrentState()?.bgcolour,
+            "--moodlet-border-colour": getCurrentState()?.bordercolour,
+            "--moodlet-text-colour": getCurrentState()?.textcolour,
+          } as React.CSSProperties
+        }
+        className={`moodlet ${
+          isFullWord ? "moodlet-fullword" : "moodlet-not-fullword"
+        }`}
+        onClick={handleClick}
+        onContextMenu={handleClick}
+      >
+        {isFullWord ? moodlet.name : moodlet.name[0]}
+      </div>
+      <div>{moodlet.state}</div>
     </div>
   );
 };

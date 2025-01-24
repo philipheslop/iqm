@@ -1,5 +1,5 @@
 [
     { "id": 1, "name": "FUELLING", "state": "not required" },
     { "id": 2, "name": "SERVICING", "state": "not required" },
-    { "id": 3, "name": "CLEANING", "state": "not required" }
+    { "id": 3, "name": "CLEANING", "state": "required" }
 ]

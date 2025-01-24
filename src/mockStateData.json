@@ -1,4 +1,6 @@
 [
     { "name": "not required", "transitions": [{"action":"rightclick","result":"required"}] },
-    { "name": "required", "transitions": [{"action":"rightclick","result":"not required"}] }
+    { "name": "required", "transitions": [{"action":"rightclick","result":"not required"},{"action":"leftclick","result":"current"} ] },
+    { "name": "current", "transitions": [{"action":"leftclick","result":"completed"}] },
+    { "name": "completed", "transitions": [{"action":"rightclick","result":"required"},{"action":"leftclick","result":"current"}] }
 ]

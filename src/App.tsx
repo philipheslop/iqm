@@ -10,6 +10,7 @@ import { MoodletComponent } from "./MoodletComponent";
 
 export default function App() {
   //States for data from mockApi - allowing a data driven approach to defining moodlets, states etc.
+  const [fullWord, setFullWord] = React.useState<boolean>(true);
   const [moodlets, setMoodlets] = React.useState<Moodlet[] | null>(null);
   const [moodletStates, setMoodletStates] = React.useState<
     MoodletState[] | null
@@ -32,8 +33,6 @@ export default function App() {
   }, []);
 
   const moodletStateHandler = (id: number, newState: string) => {
-    console.log(id);
-    console.log(newState);
     if (moodlets) {
       setMoodlets(
         moodlets.map((moodlet: Moodlet) => {
@@ -57,6 +56,15 @@ export default function App() {
 
   return (
     <div className="App">
+      Use Full Text:
+      <label className="switch">
+        <input
+          type="checkbox"
+          checked={fullWord}
+          onChange={() => setFullWord(!fullWord)}
+        />
+        <span className="slider round"></span>
+      </label>
       <ul>
         {moodlets.map((moodlet) => {
           return (
@@ -65,7 +73,7 @@ export default function App() {
               moodletStateHandler={moodletStateHandler}
               moodlet={moodlet}
               moodletStates={moodletStates}
-              isFullWord={true}
+              isFullWord={fullWord}
             ></MoodletComponent>
           );
         })}

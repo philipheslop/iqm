@@ -25,9 +25,6 @@ export const MoodletComponent: React.FC<MoodletComponentProps> = ({
     event.preventDefault();
     let currentState = getCurrentState();
     if (currentState) {
-      console.log("currentState");
-      console.log(currentState);
-      console.log(event.type);
       let transition = null;
       switch (event.type) {
         case "click":
@@ -63,7 +60,6 @@ export const MoodletComponent: React.FC<MoodletComponentProps> = ({
       >
         {isFullWord ? moodlet.name : moodlet.name[0]}
       </div>
-      <div>{moodlet.state}</div>
     </div>
   );
 };

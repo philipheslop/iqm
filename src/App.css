@@ -3,12 +3,22 @@
   text-align: center;
 }
 
+.outer-container {
+  margin: auto;
+  width: 600px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  border-radius: 10px;
+}
+
 .switch {
   position: relative;
   display: inline-block;
   vertical-align: middle;
   width: 60px;
   height: 34px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .switch input {
@@ -42,11 +52,11 @@
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #77b1e0;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px #77b1e0;
 }
 
 input:checked + .slider:before {

@@ -9,6 +9,14 @@ export interface MoodletComponentProps {
   isFullWord: boolean;
 }
 
+const openedStyle = {
+  maxWidth: "100%",
+};
+
+const closedStyle = {
+  maxWidth: 0,
+};
+
 export const MoodletComponent: React.FC<MoodletComponentProps> = ({
   moodlet,
   moodletStateHandler,
@@ -42,24 +50,34 @@ export const MoodletComponent: React.FC<MoodletComponentProps> = ({
     }
   };
 
+  let moodletFullStyle = {
+    "--moodlet-colour": getCurrentState()?.bgcolour,
+    "--moodlet-border-colour": getCurrentState()?.bordercolour,
+    "--moodlet-text-colour": getCurrentState()?.textcolour,
+    width: "100px",
+    transition: "width 0.15s ease-out",
+  };
+
+  let moodletInitialStyle = {
+    "--moodlet-colour": getCurrentState()?.bgcolour,
+    "--moodlet-border-colour": getCurrentState()?.bordercolour,
+    "--moodlet-text-colour": getCurrentState()?.textcolour,
+    width: "20px",
+    transition: "width 0.25s ease-in",
+  };
+
   return (
-    <div>
-      <div
-        style={
-          {
-            "--moodlet-colour": getCurrentState()?.bgcolour,
-            "--moodlet-border-colour": getCurrentState()?.bordercolour,
-            "--moodlet-text-colour": getCurrentState()?.textcolour,
-          } as React.CSSProperties
-        }
-        className={`moodlet ${
-          isFullWord ? "moodlet-fullword" : "moodlet-not-fullword"
-        }`}
-        onClick={handleClick}
-        onContextMenu={handleClick}
-      >
-        {isFullWord ? moodlet.name : moodlet.name[0]}
-      </div>
+    <div
+      style={
+        isFullWord
+          ? moodletFullStyle
+          : (moodletInitialStyle as React.CSSProperties)
+      }
+      className={`moodlet`}
+      onClick={handleClick}
+      onContextMenu={handleClick}
+    >
+      {isFullWord ? moodlet.name : moodlet.name[0]}
     </div>
   );
 };

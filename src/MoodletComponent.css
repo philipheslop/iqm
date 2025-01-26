@@ -20,19 +20,10 @@ a {
   color: var(--moodlet-text-colour);
   cursor: pointer;
   opacity: 70%;
+  border-radius: 20px;
   /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 
 .moodlet:hover {
   opacity: 100%;
-}
-
-.moodlet-fullword {
-  width: fit-content;
-  border-radius: 20px;
-}
-
-.moodlet-not-fullword {
-  width: 20px;
-  border-radius: 50%;
 }

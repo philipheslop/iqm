@@ -55,8 +55,8 @@ export default function App() {
     );
 
   return (
-    <div className="App">
-      Use Full Text:
+    <div className="App outer-container">
+      Initials
       <label className="switch">
         <input
           type="checkbox"
@@ -65,7 +65,8 @@ export default function App() {
         />
         <span className="slider round"></span>
       </label>
-      <ul>
+      Full Text
+      <div>
         {moodlets.map((moodlet) => {
           return (
             <MoodletComponent
@@ -77,7 +78,7 @@ export default function App() {
             ></MoodletComponent>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 }
